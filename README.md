@@ -166,8 +166,12 @@ importer output, so you can regenerate the C and build directly:
 ```
 # from PowerShell, mingw64 on PATH
 gba_recompile --rom variants/emerald/roms/emerald_usa.gba \
-              --config variants/emerald/symbols/emerald_usa.toml \
-              --out variants/emerald/generated
+              --config variants/emerald/game.toml \
+              --config variants/emerald/symbols/BPEE_symbols.toml \
+              --config variants/emerald/symbols/BPEE_reviewed_seeds.toml \
+              --symbols variants/emerald/symbols/imported_symbols.tsv \
+              --data-symbols variants/emerald/symbols/imported_data_symbols.tsv \
+              --out variants/emerald/generated --max-functions 65536
 cmake -S . -B build -G Ninja
 cmake --build build --target EmeraldRecomp
 ```
